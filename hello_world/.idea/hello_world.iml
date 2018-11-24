@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="spotify2" />
+    <orderEntry type="module" module-name="workshoptdc" />
+    <orderEntry type="module" module-name="crude" />
+    <orderEntry type="module" module-name="projeto" />
+    <orderEntry type="module" module-name="projeto" />
+    <orderEntry type="module" module-name="TrabalhoFinalAdler" />
+  </component>
+</module>

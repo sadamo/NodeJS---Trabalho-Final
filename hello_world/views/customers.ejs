@@ -1,0 +1,49 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+         <div class="data-btn row">
+           <button onClick="addUser();" class="waves-effect waves-light btn">+ Adicionar</button>
+         </div>
+         <div class="data-table row">
+            <table class="striped" border="1" cellpadding="7" cellspacing="7">
+                <tr class="">
+                    <th width="50px">Número</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th width="120px">Ação</th>
+                </tr>
+                               
+                <% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>
+                 
+                <tr>
+                    <td><%=(i+1)%></td>
+                    <td><%=data[i].name%></td>
+                    <td><%=data[i].address%></td>
+                    <td><%=data[i].phone%></td>
+                    <td><%=data[i].email%></td>
+                    <td>
+                        <a class="a-inside edit waves-effect waves-light btn green row center" href="../customers/edit/<%=data[i].id%>">Editar</a>
+                       
+                        <a class="a-inside delete waves-effect waves-light btn red row" href="../customers/delete/<%=data[i].id%>">Deletar</a>
+                       
+                    </td>
+                </tr>
+            <% }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No user</td>
+                 </tr>
+            <% } %>
+                
+                              
+                
+            </table>
+         </div>
+        </div>
+        
+<%- include layouts/footer.ejs %>
