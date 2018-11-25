@@ -23,13 +23,13 @@
 <% for (i=0;i< data.length;i++) { %>
 <div class="livro">
 
-    <a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a>
-
+    <a href="/livro/:<%=data[i].ISBN%>"><%=data[i].title%></a>
+    by  <a href="/author/:<%=data[i].AuthorID%>"><%=data[i].nameF%> <%=data[i].nameL%></a>
 
 
     <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[i].ISBN%>.01.THUMBZZZ.jpg">
     <%=data[i].description%>
-    <a href="/book/:<%=data[i].ISBN%>">more...</a>
+    <a href="/livro/:<%=data[i].ISBN%>">more...</a>
 </div>
 <%}%>
 

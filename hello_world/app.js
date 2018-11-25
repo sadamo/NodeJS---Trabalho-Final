@@ -10,7 +10,7 @@ var path = require('path');
 
 //load customers route
 var customers = require('./routes/customers');
-var livro = require('./routes/livro');
+var databaseconnection = require('./routes/databaseconnection');
 var app = express();
 
 var connection  = require('express-myconnection'); 
@@ -52,18 +52,11 @@ app.use(
 
 );
 
-
-
-app.get('/', routes.index);
-app.get('/customers', customers.list);
-app.get('/customers/add', customers.add);
-app.post('/customers/add', customers.save);
-app.get('/customers/delete/:id', customers.delete_customer);
-app.get('/customers/edit/:id', customers.edit);
-app.post('/customers/edit/:id',customers.save_edit);
-app.get('/index', livro.list);
-app.get('/livro/:isbn', livro.show);
-app.get('/shopping_cart', livro.shopping_cart);
+app.get('/', databaseconnection.index);
+app.get('/book/:isbn', databaseconnection.book);
+app.get('/author/:authorid', databaseconnection.author);
+app.get('/categoria/:id', databaseconnection.categories);
+app.get('/shopping_cart', databaseconnection.shopping_cart);
 app.use(app.router);
 
 http.createServer(app).listen(app.get('port'), function(){
