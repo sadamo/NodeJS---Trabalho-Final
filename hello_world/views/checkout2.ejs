@@ -1,0 +1,35 @@
+<%- include layouts/header.ejs %>
+<div class="search">
+    <h1>Search</h1>
+    <input>
+    <button>Search</button>
+</div>
+<div class="browser">
+    <h1>Browser</h1>
+    <ul>
+        <% for (i=0; i< categoria.length; i++){%>
+        <li>
+            <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>">
+                <%=categoria[i].CategoryName%>
+            </a>
+        </li>
+        <%}%>
+    </ul>
+</div>
+Shipping Information
+New Customer - Please provide your shipping address.
+
+<form>
+    <input>
+    <input>
+    <input>
+    <input>
+    <input>
+    <input>
+    <input>
+</form>
+<button onclick="window.location.href='checkout3'">Place your order</button>
+
+<%- include layouts/footer.ejs %>
+
+

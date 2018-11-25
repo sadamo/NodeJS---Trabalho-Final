@@ -1,0 +1,44 @@
+<%- include layouts/header.ejs %>
+<div class="search">
+    <h1>Search</h1>
+    <input>
+    <button>Search</button>
+</div>
+<div class="browser">
+    <h1>Browser</h1>
+    <ul>
+        <% for (i=0; i< categoria.length; i++){%>
+        <li>
+            <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>">
+                <%=categoria[i].CategoryName%>
+            </a>
+        </li>
+        <%}%>
+    </ul>
+</div>
+Your Order History<br>
+
+You have ordered <span id="quantidade">X</span> books
+
+<%for(i=0;i<data.length;i++){%>
+<div id="<%=data[i].ISBN%>" class="div-book div-book-<%=data[i].ISBN%>" style="display:none;">
+    <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[i].ISBN%>.01.THUMBZZZ.jpg">
+    Order ID:
+    Data
+    <a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a>
+    by <%=data[i].nameF%> <%=data[i].nameL%>
+    Quantidade: <span id="<%=data[i].ISBN%>-qtd"></span>
+
+</div>
+
+<%}%>
+
+<script>
+    $(document).ready(function() {
+        loadItens();
+        loadOrder();
+    });</script>
+
+<%- include layouts/footer.ejs %>
+
+

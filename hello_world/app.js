@@ -4,12 +4,10 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 
 //load customers route
-var customers = require('./routes/customers');
 var databaseconnection = require('./routes/databaseconnection');
 var app = express();
 
@@ -57,6 +55,10 @@ app.get('/book/:isbn', databaseconnection.book);
 app.get('/SearchBrowser/author/:authorid', databaseconnection.author);
 app.get('/SearchBrowser/categoria/:id', databaseconnection.categories);
 app.get('/shopping_cart', databaseconnection.shopping_cart);
+app.get('/checkout1', databaseconnection.checkout1);
+app.get('/checkout2', databaseconnection.checkout2);
+app.get('/checkout3', databaseconnection.checkout3);
+app.get('/order_history', databaseconnection.order_history);
 app.use(app.router);
 
 http.createServer(app).listen(app.get('port'), function(){

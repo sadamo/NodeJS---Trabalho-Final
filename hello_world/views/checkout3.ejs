@@ -16,56 +16,74 @@
         <%}%>
     </ul>
 </div>
+Order Confirmation
+
 <table>
     <tr>
+        <td>Order Number:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Shipping Address:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Books Shipped:</td>
         <th>Title</th>
         <th>Qty</th>
         <th>Price</th>
         <th>Total</th>
-        <th>Action</th>
     </tr>
     <%for(i=0;i<data.length;i++){%>
     <tr id="<%=data[i].ISBN%>" style="display:none;">
+        <td></td>
         <td><a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a></td>
         <td id="<%=data[i].ISBN%>-qtd"></td>
         <td id="<%=data[i].ISBN%>-price"><%=data[i].price%></td>
         <td id="<%=data[i].ISBN%>-total"></td>
-        <td>
-            <button onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
-            <button onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
-        </td>
     </tr>
     <%}%>
     <tr>
         <td>Sub-total</td>
         <td></td>
         <td></td>
-        <td id="sub-total-value"></td>
         <td></td>
+        <td id="sub-total-value"></td>
     </tr>
     <tr>
         <td>Shipping value</td>
         <td></td>
         <td></td>
-        <td id="shipping-value"></td>
         <td></td>
+        <td id="shipping-value"></td>
     </tr>
     <tr>
         <td>Total</td>
         <td></td>
         <td></td>
-        <td id="total-value"></td>
         <td></td>
+        <td id="total-value"></td>
     </tr>
 </table>
+
+
+A confirmation has been sent to your email address.
+Thank you for shopping with GeekBooks.com.
+<button onclick="window.location.href='/'">Continue shopping</button>
+
+
+<button onclick="window.location.href='/order_history'">View your order history</button>
+
+
 <script>
 $(document).ready(function() { loadTable();
 });</script>
-<button onclick="window.location.href='/'">Continue shopping</button>
-                 <button onclick="window.location.href='/checkout1'">Proceed to Checkout</button>
-
-
-
 
 <%- include layouts/footer.ejs %>
 

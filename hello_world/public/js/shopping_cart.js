@@ -36,11 +36,13 @@ function add_shopping_cart(ISBN){
         var arr = {isbn: ISBN, qtd: getCookie("item[" + ISBN + "]").qtd + 1}
         var json_arr = JSON.stringify(arr);
         setCookie("item[" + ISBN + "]", json_arr, 1);
+        setCookie("qtdtotal", getCookie("qtdtotal") + 1, 1);
     }
     else{
         var arr = {isbn: ISBN, qtd: 1};
         var json_arr = JSON.stringify(arr);
         setCookie("item[" + ISBN + "]", json_arr, 1);
+        setCookie("qtdtotal", getCookie("qtdtotal") + 1, 1);
     }
 
 
@@ -52,6 +54,7 @@ function add_cart(ISBN){
         var arr = {isbn: ISBN, qtd: getCookie("item[" + ISBN + "]").qtd + 1}
         var json_arr = JSON.stringify(arr);
         setCookie("item[" + ISBN + "]", json_arr, 1);
+        setCookie("qtdtotal", getCookie("qtdtotal") + 1, 1);
         loadTable();
     }
 }
@@ -61,12 +64,14 @@ function rm_cart(ISBN){
         var arr = {isbn: ISBN, qtd: getCookie("item[" + ISBN + "]").qtd - 1}
         var json_arr = JSON.stringify(arr);
         setCookie("item[" + ISBN + "]", json_arr, 1);
+        setCookie("qtdtotal", getCookie("qtdtotal") - 1, 1);
         loadTable();
     }
     else{
         var arr = {};
         var json_arr = JSON.stringify(arr);
         setCookie("item[" + ISBN + "]", json_arr, 1);
+        setCookie("qtdtotal", getCookie("qtdtotal") - 1, 1);
         loadTable();
         $("#" + ISBN).hide();
     }

@@ -121,3 +121,75 @@ exports.shopping_cart = function(req, res){
     });
 
 };
+exports.checkout1 = function(req, res){
+    req.getConnection(function(err,connection){
+        connection.query('SELECT * FROM bookcategories',function(err,rows)
+        {
+            if(err)
+                console.log("Error Selecting : %s ",err );
+            res.render('checkout1',{page_title:"Checkout - Node.js",categoria:rows});
+
+
+        });
+
+        //console.log(query.sql);
+    });
+
+};
+exports.checkout2 = function(req, res){
+    req.getConnection(function(err,connection){
+        connection.query('SELECT * FROM bookcategories',function(err,rows)
+        {
+            if(err)
+                console.log("Error Selecting : %s ",err );
+            res.render('checkout2',{page_title:"Checkout - Node.js",categoria:rows});
+
+
+        });
+
+        //console.log(query.sql);
+    });
+
+};
+exports.checkout3 = function(req, res){
+    req.getConnection(function(err,connection){
+
+        connection.query('SELECT * FROM bookdescriptions NATURAL JOIN bookauthorsbooks NATURAL JOIN bookauthors GROUP BY ISBN', function(err,rows)
+        {
+
+            if(err)
+                console.log("Error Selecting : %s ",err );
+            connection.query('SELECT * FROM bookcategories', function(err,result) {//execução da que
+                if (err)
+                    console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
+
+                res.render('checkout3', {page_title: "Checkout", data: rows, categoria: result});
+            });
+
+        });
+
+        //console.log(query.sql);
+    });
+
+};
+exports.order_history = function(req, res){
+    req.getConnection(function(err,connection){
+
+        connection.query('SELECT * FROM bookdescriptions NATURAL JOIN bookauthorsbooks NATURAL JOIN bookauthors GROUP BY ISBN', function(err,rows)
+        {
+
+            if(err)
+                console.log("Error Selecting : %s ",err );
+            connection.query('SELECT * FROM bookcategories', function(err,result) {//execução da que
+                if (err)
+                    console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
+
+                res.render('order_history', {page_title: "Order History", data: rows, categoria: result});
+            });
+
+        });
+
+        //console.log(query.sql);
+    });
+
+};
