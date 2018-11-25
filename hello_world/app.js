@@ -54,8 +54,8 @@ app.use(
 
 app.get('/', databaseconnection.index);
 app.get('/book/:isbn', databaseconnection.book);
-app.get('/author/:authorid', databaseconnection.author);
-app.get('/categoria/:id', databaseconnection.categories);
+app.get('/SearchBrowser/author/:authorid', databaseconnection.author);
+app.get('/SearchBrowser/categoria/:id', databaseconnection.categories);
 app.get('/shopping_cart', databaseconnection.shopping_cart);
 app.use(app.router);
 

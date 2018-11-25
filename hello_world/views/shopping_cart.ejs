@@ -1,19 +1,72 @@
 <%- include layouts/header.ejs %>
-
+<div class="search">
+    <h1>Search</h1>
+    <input>
+    <button>Search</button>
+</div>
+<div class="browser">
+    <h1>Browser</h1>
+    <ul>
+        <% for (i=0; i< categoria.length; i++){%>
+        <li>
+            <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>">
+                <%=categoria[i].CategoryName%>
+            </a>
+        </li>
+        <%}%>
+    </ul>
+</div>
 <table>
     <tr>
         <th>Title</th>
         <th>Qty</th>
         <th>Price</th>
         <th>Total</th>
+        <th>Action</th>
+    </tr>
+    <%for(i=0;i<data.length;i++){%>
+    <tr id="<%=data[i].ISBN%>" style="display:none;">
+        <td><a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a></td>
+        <td id="<%=data[i].ISBN%>-qtd"></td>
+        <td id="<%=data[i].ISBN%>-price"><%=data[i].price%></td>
+        <td id="<%=data[i].ISBN%>-total"></td>
+        <td>
+            <button onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
+            <button onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
+        </td>
+    </tr>
+    <%}%>
+    <tr>
+        <td>Sub-total</td>
+        <td></td>
+        <td></td>
+        <td id="sub-total-value"></td>
+        <td></td>
     </tr>
     <tr>
-        <td><%=data[0].title%></td>
-        <td>QT</td>
-        <td><%=data[0].price%></td>
-        <td>T</td>
+        <td>Shipping value</td>
+        <td></td>
+        <td></td>
+        <td id="shipping-value"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td id="total-value"></td>
+        <td></td>
     </tr>
 </table>
-                 <button>Add Cart</button>
+<script>
+$(document).ready(function() { loadTable();
+});</script>
+<button onclick="window.location.href='/'">Continue shopping</button>
+                 <button>Proceed to Checkout</button>
+
+
+
 
 <%- include layouts/footer.ejs %>
+
+

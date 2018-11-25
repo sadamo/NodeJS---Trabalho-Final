@@ -11,7 +11,7 @@
     <ul>
         <% for (i=0; i< categoria.length; i++){%>
         <li>
-            <a href="/categoria/:<%=categoria[i].CategoryID%>">
+            <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>">
                 <%=categoria[i].CategoryName%>
             </a>
         </li>
@@ -24,14 +24,14 @@
 
                  <br>
                  <br>
-by  <a href="/author/:<%=data[0].AuthorID%>"><%=data[0].nameF%> <%=data[0].nameL%></a>
+by  <a href="/SearchBrowser/author/:<%=data[0].AuthorID%>"><%=data[0].nameF%> <%=data[0].nameL%></a>
 
                  <br>
                  <br>
                 <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.LZZZZZZZ.jpg">
                 <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.MZZZZZZZ.jpg">
                 </a>
-                 <button>Add Cart</button>
+<button onclick="add_shopping_cart('<%=data[0].ISBN%>')">Add Cart</button>
                  <br>
                  <br>
 
@@ -56,6 +56,6 @@ by  <a href="/author/:<%=data[0].AuthorID%>"><%=data[0].nameF%> <%=data[0].nameL
                  <%=data[0].description%>
                  <br>
                  <br>
-                 <button>Add Cart</button>
+                 <button onclick="add_shopping_cart('<%=data[0].ISBN%>')">Add Cart</button>
 
 <%- include layouts/footer.ejs %>

@@ -20,11 +20,17 @@
     </ul>
 </div>
 
+
+<%if (parametro[0].CategoryName != undefined){%>
+<%=data.length%> books in '<%=parametro[0].CategoryName%>' category
+<%}else if (parametro[0].nameL != undefined){%>
+<%=data.length%> books contain '<%=parametro[0].nameF%> <%=parametro[0].nameL%>'
+<%}%>
 <% for (i=0;i< data.length;i++) { %>
 <div class="livro">
 
     <a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a>
-
+    by  <a href="/SearchBrowser/author/:<%=data[i].AuthorID%>"><%=data[i].nameF%> <%=data[i].nameL%></a>
 
     <a href="/book/:<%=data[i].ISBN%>">
     <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[i].ISBN%>.01.THUMBZZZ.jpg">
