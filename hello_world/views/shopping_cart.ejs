@@ -1,21 +1,4 @@
 <%- include layouts/header.ejs %>
-<div class="search">
-    <h1>Search</h1>
-    <input>
-    <button>Search</button>
-</div>
-<div class="browser">
-    <h1>Browser</h1>
-    <ul>
-        <% for (i=0; i< categoria.length; i++){%>
-        <li>
-            <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>">
-                <%=categoria[i].CategoryName%>
-            </a>
-        </li>
-        <%}%>
-    </ul>
-</div>
 <table>
     <tr>
         <th>Title</th>
@@ -31,8 +14,8 @@
         <td id="<%=data[i].ISBN%>-price"><%=data[i].price%></td>
         <td id="<%=data[i].ISBN%>-total"></td>
         <td>
-            <button onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
-            <button onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
+            <button class="waves-effect waves-light btn" onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
+            <button class="waves-effect waves-light btn" onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
         </td>
     </tr>
     <%}%>
@@ -61,8 +44,8 @@
 <script>
 $(document).ready(function() { loadTable();
 });</script>
-<button onclick="window.location.href='/'">Continue shopping</button>
-                 <button onclick="window.location.href='/checkout1'">Proceed to Checkout</button>
+<button class="waves-effect waves-light btn" onclick="window.location.href='/'">Continue shopping</button>
+<button class="waves-effect waves-light btn" onclick="window.location.href='/checkout1'">Proceed to Checkout</button>
 
 
 

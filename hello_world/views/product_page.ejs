@@ -1,0 +1,42 @@
+<%- include layouts/header.ejs %>
+
+                 <%=data[0].title%>
+
+
+                 <br>
+                 <br>
+by  <a href="/SearchBrowser/author/:<%=data[0].AuthorID%>"><%=data[0].nameF%> <%=data[0].nameL%></a>
+
+                 <br>
+                 <br>
+                <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.LZZZZZZZ.jpg">
+                <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.MZZZZZZZ.jpg">
+                </a>
+<button class="waves-effect waves-light btn" onclick="add_shopping_cart('<%=data[0].ISBN%>')">Add Cart</button>
+                 <br>
+                 <br>
+
+                Price: <%=data[0].price%>
+                 <br>
+                 <br>
+                Publisher: <%=data[0].publisher%>
+                 <br>
+                 <br>
+                Pages: <%=data[0].pages%>
+                 <br>
+                 <br>
+                Edition: <%=data[0].edition%>
+                 <br>
+                 <br>
+
+                 ISBN: <%=data[0].ISBN%>
+                 <br>
+                 <br>
+
+
+                 <%=data[0].description%>
+                 <br>
+                 <br>
+<button class="waves-effect waves-light btn" onclick="add_shopping_cart('<%=data[0].ISBN%>')">Add Cart</button>
+
+<%- include layouts/footer.ejs %>

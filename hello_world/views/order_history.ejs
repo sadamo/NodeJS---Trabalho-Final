@@ -1,21 +1,4 @@
 <%- include layouts/header.ejs %>
-<div class="search">
-    <h1>Search</h1>
-    <input>
-    <button>Search</button>
-</div>
-<div class="browser">
-    <h1>Browser</h1>
-    <ul>
-        <% for (i=0; i< categoria.length; i++){%>
-        <li>
-            <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>">
-                <%=categoria[i].CategoryName%>
-            </a>
-        </li>
-        <%}%>
-    </ul>
-</div>
 Your Order History<br>
 
 You have ordered <span id="quantidade">X</span> books

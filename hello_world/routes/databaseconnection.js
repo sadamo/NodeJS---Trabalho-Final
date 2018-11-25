@@ -90,7 +90,7 @@ exports.book = function(req, res){
                 if (err)
                     console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
 
-                res.render('livro', {page_title: "Livro - Node.js", data: rows, categoria: result});
+                res.render('product_page', {page_title: "Livro - Node.js", data: rows, categoria: result});
             });
 
         });

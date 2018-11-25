@@ -1,28 +1,11 @@
 <%- include layouts/header.ejs %>
-<div class="search">
-    <h1>Search</h1>
-    <input>
-    <button>Search</button>
-</div>
-<div class="browser">
-    <h1>Browser</h1>
-    <ul>
-        <% for (i=0; i< categoria.length; i++){%>
-        <li>
-            <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>">
-                <%=categoria[i].CategoryName%>
-            </a>
-        </li>
-        <%}%>
-    </ul>
-</div>
 Your Account <br>
 Buying online is quick and easy!<br>
 
 You have <span id="quantidade">X</span> items in your cart.
 
 <input placeholder="Email">
-<button onclick="window.location.href='/checkout2'">Proceed to checkout</button>
+<button class="waves-effect waves-light btn" onclick="window.location.href='/checkout2'">Proceed to checkout</button>
 
 
 <script>

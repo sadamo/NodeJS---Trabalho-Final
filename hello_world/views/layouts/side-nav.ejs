@@ -1,0 +1,24 @@
+    <ul class="collection">
+        <li class="collection-item"  style="background-color: #118972">
+            <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </li>
+        <li class="collection-item black">
+            <a href="/" class="white-text">Home</a>
+        </li>
+        <li>
+            <ul class="collection with-header">
+                <li class="collection-header white-text"  style="background-color: #118972">Categorias</li>
+                <% for (i=0; i< categoria.length; i++){%>
+                <li class="collection-item white-text"  style="background-color: #118972">
+                    <a href="/SearchBrowser/categoria/:<%=categoria[i].CategoryID%>" class="grey-text text-darken-5">
+                        <%=categoria[i].CategoryName%>
+                    </a>
+                </li>
+                <%}%>
+            </ul>
+        </li>
+    </ul>
