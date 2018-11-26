@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Erstellungszeit: 25. Nov 2018 um 14:50
+-- Erstellungszeit: 26. Nov 2018 um 14:35
 -- Server-Version: 10.1.34-MariaDB
 -- PHP-Version: 7.2.8
 
@@ -179,6 +179,31 @@ INSERT INTO `bookcategoriesbooks` (`CategoryID`, `ISBN`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `bookcustomers`
+--
+
+CREATE TABLE `bookcustomers` (
+  `custID` int(11) NOT NULL,
+  `fname` varchar(20) NOT NULL,
+  `lname` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `street` varchar(25) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `state` varchar(2) NOT NULL,
+  `zip` varchar(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `bookcustomers`
+--
+
+INSERT INTO `bookcustomers` (`custID`, `fname`, `lname`, `email`, `street`, `city`, `state`, `zip`) VALUES
+(1, 'rarysh', 'souza', 'rarysh.costa@gmail.com', 'rua', 'cid', 'FL', '12312'),
+(2, '1', '1', 'daniels@gmail.com', '1', '1', '1', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `bookdescriptions`
 --
 
@@ -217,6 +242,31 @@ INSERT INTO `bookdescriptions` (`ISBN`, `title`, `description`, `price`, `publis
 ('1590595521', 'Beginning PHP and MySQL 5', '<p> <em>Beginning PHP 5 and MYSQL: From Novice to Professional</em> offers a comprehensive introduction to two of the most popular Web  application building technologies on the planet: the scripting language  PHP and the MySQL database server. This book will not only expose you  to the core aspects of both technologies, but will provide valuable  insight into how they are used in unison to create dynamic data-driven  Web applications.</p><p><em>Beginning PHP 5 and MYSQL</em> explains the  new features of the latest releases of the world&rsquo;s most popular Open  Source Web development technologies: MySQL 4 database server and PHP 5  scripting language. This book explores the benefits, extensive new  features, and advantages of the object-oriented PHP 5, and how it can  be used in conjunction with MySQL 4 to create powerful dynamic Web  sites. </p><p> This is the perfect book for the Web designer,  programmer, hobbyist, or novice that wants to learn how to create  applications with PHP 5 and MySQL 4, and is a great entrance point for  Apress&rsquo;s extensive spectrum of PHP books planned for 2004.</p>', '44.99', 'Apress', 'January 23, 2006', '1', '952'),
 ('1590595726', 'Beginning ASP.NET 2.0 in C#', '<p><em>Beginning ASP.NET 2.0 in C# 2005: From Novice to Professional</em> steers you through the maze of ASP.NET web programming concepts. You  will learn language and theory simultaneously, mastering the core  techniques necessary to develop good coding practices and enhance your  skill set.</p><p>This book provides thorough coverage of ASP.NET,  guiding you from beginning to advanced techniques, such as querying  databases from within a web page and performance-tuning your site.  You\'ll find tips for best practices and comprehensive discussions of  key database and XML principles.</p><p>The book also emphasizes the  invaluable coding techniques of object orientation and code-behind,  which will enable you to build real-world websites instead of just  scraping by with simplified coding practices. By the time you finish  this book, you will have mastered the core techniques essential to  professional ASP.NET developers.</p>', '49.99', 'Apress', 'January 27, 2006', '1', '1184');
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `bookorderitems`
+--
+
+CREATE TABLE `bookorderitems` (
+  `orderID` int(11) NOT NULL,
+  `ISBN` varchar(11) NOT NULL,
+  `qty` int(4) DEFAULT NULL,
+  `price` double(6,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `bookorders`
+--
+
+CREATE TABLE `bookorders` (
+  `orderID` int(11) NOT NULL,
+  `custID` int(6) DEFAULT NULL,
+  `orderdate` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indizes der exportierten Tabellen
 --
@@ -246,11 +296,29 @@ ALTER TABLE `bookcategoriesbooks`
   ADD PRIMARY KEY (`CategoryID`,`ISBN`);
 
 --
+-- Indizes für die Tabelle `bookcustomers`
+--
+ALTER TABLE `bookcustomers`
+  ADD PRIMARY KEY (`custID`);
+
+--
 -- Indizes für die Tabelle `bookdescriptions`
 --
 ALTER TABLE `bookdescriptions`
   ADD PRIMARY KEY (`ISBN`),
   ADD KEY `strTitle` (`title`);
+
+--
+-- Indizes für die Tabelle `bookorderitems`
+--
+ALTER TABLE `bookorderitems`
+  ADD PRIMARY KEY (`orderID`,`ISBN`);
+
+--
+-- Indizes für die Tabelle `bookorders`
+--
+ALTER TABLE `bookorders`
+  ADD PRIMARY KEY (`orderID`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -267,6 +335,18 @@ ALTER TABLE `bookauthors`
 --
 ALTER TABLE `bookcategories`
   MODIFY `CategoryID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT für Tabelle `bookcustomers`
+--
+ALTER TABLE `bookcustomers`
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT für Tabelle `bookorders`
+--
+ALTER TABLE `bookorders`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

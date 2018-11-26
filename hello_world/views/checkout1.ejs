@@ -14,13 +14,13 @@
     </div>
     <div class="row">
         <div class="col s10 offset-s1 center">
-            <form method="post" action="/customers/edit">
+            <form method="post" action="/checkout2">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
                     <input id="email" name="email" type="email" class="validate" required>
                     <label for="email">E-mail</label>
                 </div>
-                <button class="waves-effect waves-light btn brown" type="submit"  id="validate"  >Proceed to checkout</button>
+                <button class="waves-effect waves-light btn brown" type="submit"  >Proceed to checkout</button>
             </form>
         </div>
     </div>
@@ -31,7 +31,6 @@
 <script>
     $(document).ready(function() {
             loadItens();
-            $("#validate").bind("click", validate);
     });
 
 

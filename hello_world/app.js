@@ -30,7 +30,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
 /*------------------------------------------
     connection peer, register as middleware
     type koneksi : single,pool and request 
@@ -56,7 +55,8 @@ app.get('/SearchBrowser/author/:authorid', databaseconnection.author);
 app.get('/SearchBrowser/categoria/:id', databaseconnection.categories);
 app.get('/shopping_cart', databaseconnection.shopping_cart);
 app.get('/checkout1', databaseconnection.checkout1);
-app.get('/checkout2', databaseconnection.checkout2);
+app.post('/checkout2', databaseconnection.checkout1save);
+app.post('/checkout3', databaseconnection.checkout2save);
 app.get('/checkout3', databaseconnection.checkout3);
 app.get('/order_history', databaseconnection.order_history);
 app.get('/about', databaseconnection.about);
