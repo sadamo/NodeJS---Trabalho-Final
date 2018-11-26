@@ -1,51 +1,63 @@
 <%- include layouts/header.ejs %>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Qty</th>
-        <th>Price</th>
-        <th>Total</th>
-        <th>Action</th>
-    </tr>
-    <%for(i=0;i<data.length;i++){%>
-    <tr id="<%=data[i].ISBN%>" style="display:none;">
-        <td><a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a></td>
-        <td id="<%=data[i].ISBN%>-qtd"></td>
-        <td id="<%=data[i].ISBN%>-price"><%=data[i].price%></td>
-        <td id="<%=data[i].ISBN%>-total"></td>
-        <td>
-            <button class="waves-effect waves-light btn" onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
-            <button class="waves-effect waves-light btn" onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
-        </td>
-    </tr>
-    <%}%>
-    <tr>
-        <td>Sub-total</td>
-        <td></td>
-        <td></td>
-        <td id="sub-total-value"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Shipping value</td>
-        <td></td>
-        <td></td>
-        <td id="shipping-value"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Total</td>
-        <td></td>
-        <td></td>
-        <td id="total-value"></td>
-        <td></td>
-    </tr>
-</table>
+<div class="card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <%for(i=0;i<data.length;i++){%>
+                <tr id="<%=data[i].ISBN%>" style="display:none;">
+                    <td><a class="brown-text" href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a></td>
+                    <td id="<%=data[i].ISBN%>-qtd"></td>
+                    <td id="<%=data[i].ISBN%>-price">$<%=data[i].price%></td>
+                    <td id="<%=data[i].ISBN%>-total">$</td>
+                    <td class="center">
+                        <button style="width:92px; margin-bottom: 5px" class="waves-effect waves-light btn brown" onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
+                        <button style="width:92px; margin-top: 5px" class="waves-effect waves-light btn brown" onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
+                    </td>
+                </tr>
+                <%}%>
+                <tr>
+                    <th>Sub-total</th>
+                    <td></td>
+                    <td></td>
+                    <th id="sub-total-value"></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Shipping value</th>
+                    <td></td>
+                    <td></td>
+                    <th id="shipping-value"></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td></td>
+                    <td></td>
+                    <th id="total-value"></th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row center">
+        <button class="waves-effect waves-light btn brown" onclick="window.location.href='/'">Continue shopping</button>
+        <button class="waves-effect waves-light btn brown" onclick="window.location.href='/checkout1'">Proceed to Checkout</button>
+    </div>
+    <div class="row"></div>
+</div>
 <script>
 $(document).ready(function() { loadTable();
 });</script>
-<button class="waves-effect waves-light btn" onclick="window.location.href='/'">Continue shopping</button>
-<button class="waves-effect waves-light btn" onclick="window.location.href='/checkout1'">Proceed to Checkout</button>
 
 
 

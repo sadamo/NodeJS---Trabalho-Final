@@ -1,16 +1,41 @@
 <%- include layouts/header.ejs %>
-Your Account <br>
-Buying online is quick and easy!<br>
 
-You have <span id="quantidade">X</span> items in your cart.
+<div class="card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s10 offset-s1 center">
+            <p>
+                Your Account <br>
+                Buying online is quick and easy!<br>
 
-<input placeholder="Email">
-<button class="waves-effect waves-light btn" onclick="window.location.href='/checkout2'">Proceed to checkout</button>
+                You have <span class="brown-text" id="quantidade">X</span> items in your cart.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s10 offset-s1 center">
+            <form method="post" action="/customers/edit">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">E-mail</label>
+                </div>
+                <button class="waves-effect waves-light btn brown" type="submit"  id="validate"  >Proceed to checkout</button>
+            </form>
+        </div>
+    </div>
+    <div class="row"></div>
+</div>
 
 
 <script>
-    $(document).ready(function() { loadItens();
-    });</script>
+    $(document).ready(function() {
+            loadItens();
+            $("#validate").bind("click", validate);
+    });
+
+
+</script>
 
 <%- include layouts/footer.ejs %>
 

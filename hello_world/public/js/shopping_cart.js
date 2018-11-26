@@ -8,27 +8,33 @@ function loadTable(){
             if (getCookie("item[" + ISBN + "]").isbn==ISBN) {
                 $("#" + ISBN).show();
                 $("#" + ISBN + "-qtd").html(getCookie("item[" + ISBN + "]").qtd);
-                var valortotal = (getCookie("item[" + ISBN + "]").qtd) * $("#" + ISBN + "-price").html();
+                var valorreplaced = $("#" + ISBN + "-price").html().replace("$", "");
+                var valortotal = (getCookie("item[" + ISBN + "]").qtd) * valorreplaced;
                 var numero = valortotal+"";
                 var decimal = numero.indexOf(".")
                 if (decimal !== -1) {
                     var resultado = valortotal.toFixed(2)
                 }
-                $("#" + ISBN + "-total").html(resultado);
+                var stringresultado = "$" + resultado;
+                $("#" + ISBN + "-total").html(stringresultado);
                 subtotal = subtotal + parseFloat(resultado);
                 qtdtotal = qtdtotal + parseInt($("#" + ISBN + "-qtd").html());
 
             }
         }
     }));
-    $("#sub-total-value").html(subtotal.toFixed(2));
+    var subtotalvalue="$";
+    subtotalvalue = subtotalvalue + subtotal.toFixed(2);
+    $("#sub-total-value").html(subtotalvalue);
     if (qtdtotal==1){
-        $("#shipping-value").html(10);
+        $("#shipping-value").html("$10");
     }
     else{
-        $("#shipping-value").html(((qtdtotal-1)*5)+10);
+        $("#shipping-value").html("$" + (((qtdtotal-1)*5)+10));
     }
-    $("#total-value").html((subtotal+parseInt($("#shipping-value").html())).toFixed(2));
+    var totalvalue = "$";
+    totalvalue = totalvalue + ((subtotal+parseInt($("#shipping-value").html().replace("$",""))).toFixed(2));
+    $("#total-value").html(totalvalue);
 }
 
 function add_shopping_cart(ISBN){

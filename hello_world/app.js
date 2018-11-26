@@ -59,6 +59,7 @@ app.get('/checkout1', databaseconnection.checkout1);
 app.get('/checkout2', databaseconnection.checkout2);
 app.get('/checkout3', databaseconnection.checkout3);
 app.get('/order_history', databaseconnection.order_history);
+app.get('/about', databaseconnection.about);
 app.use(app.router);
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,67 +1,85 @@
 <%- include layouts/header.ejs %>
-Order Confirmation
 
-<table>
-    <tr>
-        <td>Order Number:</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Shipping Address:</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Books Shipped:</td>
-        <th>Title</th>
-        <th>Qty</th>
-        <th>Price</th>
-        <th>Total</th>
-    </tr>
-    <%for(i=0;i<data.length;i++){%>
-    <tr id="<%=data[i].ISBN%>" style="display:none;">
-        <td></td>
-        <td><a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a></td>
-        <td id="<%=data[i].ISBN%>-qtd"></td>
-        <td id="<%=data[i].ISBN%>-price"><%=data[i].price%></td>
-        <td id="<%=data[i].ISBN%>-total"></td>
-    </tr>
-    <%}%>
-    <tr>
-        <td>Sub-total</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td id="sub-total-value"></td>
-    </tr>
-    <tr>
-        <td>Shipping value</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td id="shipping-value"></td>
-    </tr>
-    <tr>
-        <td>Total</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td id="total-value"></td>
-    </tr>
-</table>
+<div class="card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <h4>Order Confirmation</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <table class="highlight">
+                <tr>
+                    <th>Order Number:</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Shipping Address:</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Books Shipped:</th>
+                    <th>Title</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                <%for(i=0;i<data.length;i++){%>
+                <tr id="<%=data[i].ISBN%>" style="display:none;">
+                    <td></td>
+                    <td><a class="brown-text" href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a></td>
+                    <td id="<%=data[i].ISBN%>-qtd"></td>
+                    <td id="<%=data[i].ISBN%>-price">$<%=data[i].price%></td>
+                    <td id="<%=data[i].ISBN%>-total"></td>
+                </tr>
+                <%}%>
+                <tr>
+                    <th>Sub-total</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th id="sub-total-value"></th>
+                </tr>
+                <tr>
+                    <th>Shipping value</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th id="shipping-value"></th>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th id="total-value"></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cols10 offset-s1 center">
+            <p>
+                A confirmation has been sent to your email address.
+                Thank you for shopping with GeekBooks.com.
+            </p>
+        </div>
+    </div>
+    <div class="row center">
+        <button class="waves-effect waves-light btn brown" onclick="window.location.href='/'">Continue shopping</button>
 
 
-A confirmation has been sent to your email address.
-Thank you for shopping with GeekBooks.com.
-<button class="waves-effect waves-light btn" onclick="window.location.href='/'">Continue shopping</button>
+        <button class="waves-effect waves-light btn brown" onclick="window.location.href='/order_history'">View your order history</button></div>
+    <div class="row"></div>
+</div>
 
-
-<button class="waves-effect waves-light btn" onclick="window.location.href='/order_history'">View your order history</button>
 
 
 <script>

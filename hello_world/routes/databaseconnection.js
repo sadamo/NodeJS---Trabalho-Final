@@ -3,6 +3,10 @@
  * GET users listing.
  */
 
+exports.about = function(req, res){
+                res.render('about');
+
+};
 exports.index = function(req, res){
   req.getConnection(function(err,connection){
         connection.query('SELECT * FROM bookdescriptions ORDER BY RAND() LIMIT 3',function(err,rows)
@@ -13,7 +17,7 @@ exports.index = function(req, res){
                 connection.query('SELECT * FROM bookcategories', function(err,result){//execução da que
                     if(err)
                         console.log("Error Selecting : %s ",err );//Mensagem de erro caso a query não possa ser executada
-                    res.render('index',{page_title:"Livros - Node.js",data:rows, categoria: result});
+                    res.render('index',{data:rows, categoria: result});
             });
                 
            
@@ -31,17 +35,12 @@ exports.author = function(req, res){
         {
 
             if(err)
-                console.log("Error Selecting : %s ",err );
-            connection.query('SELECT * FROM bookcategories', function(err,result){//execução da que
+                console.log("Error Selecting : %s ",err );//Mensagem de erro caso a query não possa ser executada
+            connection.query('SELECT * FROM bookauthors where AuthorID = ?', [authorid], function(err,param){//execução da que
                 if(err)
                     console.log("Error Selecting : %s ",err );//Mensagem de erro caso a query não possa ser executada
-                connection.query('SELECT * FROM bookauthors where AuthorID = ?', [authorid], function(err,param){//execução da que
-                    if(err)
-                        console.log("Error Selecting : %s ",err );//Mensagem de erro caso a query não possa ser executada
-                    res.render('search_browser',{page_title:"Livros - Node.js",data:rows, categoria: result, parametro: param});
-                });
-            });
-
+                res.render('search_browser',{data:rows, parametro: param});
+             });
 
         });
 
@@ -56,20 +55,14 @@ exports.categories = function(req, res){
         connection.query('SELECT * FROM bookcategoriesbooks NATURAL JOIN bookdescriptions NATURAL JOIN bookauthorsbooks NATURAL JOIN bookauthors where CategoryID = ? GROUP BY ISBN', [id],function(err,rows)
         {
 
-            if(err)
-                console.log("Error Selecting : %s ",err );
-            connection.query('SELECT * FROM bookcategories', function(err,result){//execução da que
                 if(err)
                     console.log("Error Selecting : %s ",err );//Mensagem de erro caso a query não possa ser executada
-                connection.query('SELECT CategoryName FROM bookcategories where CategoryID = ?', [id], function(err,param){//execução da que
-                    if(err)
-                        console.log("Error Selecting : %s ",err );//Mensagem de erro caso a query não possa ser executada
-                        res.render('search_browser',{page_title:"Livros - Node.js",data:rows, categoria: result, parametro: param});
+                    connection.query('SELECT CategoryName FROM bookcategories where CategoryID = ?', [id], function(err,param) {//execução da que
+                    if (err)
+                        console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
+                        res.render('search_browser', {data: rows, parametro: param                      });
+                    });
                 });
-            });
-
-
-        });
 
         //console.log(query.sql);
     });
@@ -83,16 +76,10 @@ exports.book = function(req, res){
 
         connection.query('SELECT * FROM bookdescriptions NATURAL JOIN bookauthorsbooks NATURAL JOIN bookauthors where ISBN = ? GROUP BY ISBN', [isbn], function(err,rows)
         {
+            if (err)
+                console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
 
-            if(err)
-                console.log("Error Selecting : %s ",err );
-            connection.query('SELECT * FROM bookcategories', function(err,result) {//execução da que
-                if (err)
-                    console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
-
-                res.render('product_page', {page_title: "Livro - Node.js", data: rows, categoria: result});
-            });
-
+            res.render('product_page', {data: rows});
         });
 
         //console.log(query.sql);
@@ -106,14 +93,10 @@ exports.shopping_cart = function(req, res){
         connection.query('SELECT * FROM bookdescriptions NATURAL JOIN bookauthorsbooks NATURAL JOIN bookauthors GROUP BY ISBN', function(err,rows)
         {
 
-            if(err)
-                console.log("Error Selecting : %s ",err );
-            connection.query('SELECT * FROM bookcategories', function(err,result) {//execução da que
                 if (err)
                     console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
 
-                res.render('shopping_cart', {page_title: "Shopping Cart", data: rows, categoria: result});
-            });
+                res.render('shopping_cart', { data: rows});
 
         });
 
@@ -122,33 +105,12 @@ exports.shopping_cart = function(req, res){
 
 };
 exports.checkout1 = function(req, res){
-    req.getConnection(function(err,connection){
-        connection.query('SELECT * FROM bookcategories',function(err,rows)
-        {
-            if(err)
-                console.log("Error Selecting : %s ",err );
-            res.render('checkout1',{page_title:"Checkout - Node.js",categoria:rows});
 
-
-        });
-
-        //console.log(query.sql);
-    });
+            res.render('checkout1');
 
 };
 exports.checkout2 = function(req, res){
-    req.getConnection(function(err,connection){
-        connection.query('SELECT * FROM bookcategories',function(err,rows)
-        {
-            if(err)
-                console.log("Error Selecting : %s ",err );
-            res.render('checkout2',{page_title:"Checkout - Node.js",categoria:rows});
-
-
-        });
-
-        //console.log(query.sql);
-    });
+            res.render('checkout2');
 
 };
 exports.checkout3 = function(req, res){
@@ -157,14 +119,10 @@ exports.checkout3 = function(req, res){
         connection.query('SELECT * FROM bookdescriptions NATURAL JOIN bookauthorsbooks NATURAL JOIN bookauthors GROUP BY ISBN', function(err,rows)
         {
 
-            if(err)
-                console.log("Error Selecting : %s ",err );
-            connection.query('SELECT * FROM bookcategories', function(err,result) {//execução da que
                 if (err)
                     console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
 
-                res.render('checkout3', {page_title: "Checkout", data: rows, categoria: result});
-            });
+                res.render('checkout3', { data: rows});
 
         });
 
@@ -177,15 +135,10 @@ exports.order_history = function(req, res){
 
         connection.query('SELECT * FROM bookdescriptions NATURAL JOIN bookauthorsbooks NATURAL JOIN bookauthors GROUP BY ISBN', function(err,rows)
         {
-
-            if(err)
-                console.log("Error Selecting : %s ",err );
-            connection.query('SELECT * FROM bookcategories', function(err,result) {//execução da que
                 if (err)
                     console.log("Error Selecting : %s ", err);//Mensagem de erro caso a query não possa ser executada
 
-                res.render('order_history', {page_title: "Order History", data: rows, categoria: result});
-            });
+                res.render('order_history', {data: rows});
 
         });
 

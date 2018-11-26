@@ -2,22 +2,58 @@
 
 
 <%if (parametro[0].CategoryName != undefined){%>
-<%=data.length%> books in '<%=parametro[0].CategoryName%>' category
+
+<div class="livro-row card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
+    <div class="row"></div>
+
+    <div class="row center">
+        <strong>
+            <%=data.length%> books in <span class="brown-text">'<%=parametro[0].CategoryName%>'</span> category
+        </strong>
+    </div>
+    <div class="row"></div>
+</div>
+
 <%}else if (parametro[0].nameL != undefined){%>
-<%=data.length%> books contain '<%=parametro[0].nameF%> <%=parametro[0].nameL%>'
+<div class="livro-row card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
+    <div class="row"></div>
+
+    <div class="row center">
+        <strong>
+            <%=data.length%> books contain <span class="brown-text">'<%=parametro[0].nameF%> <%=parametro[0].nameL%>'</span>
+        </strong>
+    </div>
+    <div class="row"></div>
+</div>
+
 <%}%>
 <% for (i=0;i< data.length;i++) { %>
-<div class="livro">
+<div class="livro-row card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
+    <div class="row"></div>
+    <div class="row center">
+        <h5 style="padding: 0 30px"><a class="brown-text" href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a></h5>
+        by  <a class="brown-text" href="/SearchBrowser/author/:<%=data[i].AuthorID%>"><%=data[i].nameF%> <%=data[i].nameL%></a>
+    </div>
+    <div class="row valign-center">
+        <div class="col s1 m1 l1">
 
-    <a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a>
-    by  <a href="/SearchBrowser/author/:<%=data[i].AuthorID%>"><%=data[i].nameF%> <%=data[i].nameL%></a>
-
-    <a href="/book/:<%=data[i].ISBN%>">
-    <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[i].ISBN%>.01.THUMBZZZ.jpg">
-    </a>
-    <%=data[i].description%>
-    <a href="/book/:<%=data[i].ISBN%>">more...</a>
+        </div>
+        <div class="col s3 m3 l3 center">
+            <a href="/book/:<%=data[i].ISBN%>">
+                <img class="responsive-img"src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[i].ISBN%>.01.MZZZZZZZ.jpg">
+            </a>
+        </div>
+        <div class="col s7 m7 l7 valign-wrapper" style="height: 150px">
+            <span class="truncartexto" style="text-align: justify"><%-data[i].description.replace(/^(.{250}\S*).*/, "$1") + "  ..."%></span>
+            <br>
+            <p class="center">
+                <button class="waves-effect waves-light btn brown " onclick="window.location.href='/book/:<%=data[i].ISBN%>'">leia mais</button>
+            </p>
+        </div>
+    </div>
+    <div class="row"></div>
 </div>
+
 <%}%>
 
 

@@ -1,42 +1,58 @@
 <%- include layouts/header.ejs %>
 
-                 <%=data[0].title%>
+<div class="row"></div>
 
+<div class="livro-row z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
+    <div class="row"></div>
+    <div class="row center">
+        <h5 class="brown-text"><%=data[0].title%></h5>
+        by  <a class="brown-text" href="/SearchBrowser/author/:<%=data[0].AuthorID%>"><%=data[0].nameF%> <%=data[0].nameL%></a>
+    </div>
+    <div class="row"></div>
+    <div class="row valign-center">
+        <div class="col s1 m1 l1">
 
-                 <br>
-                 <br>
-by  <a href="/SearchBrowser/author/:<%=data[0].AuthorID%>"><%=data[0].nameF%> <%=data[0].nameL%></a>
+        </div>
+        <div class="col s3 m3 l3 center">
+            <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.LZZZZZZZ.jpg">
+                <img class="responsive-img"src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.MZZZZZZZ.jpg">
+            </a>
+        </div>
+        <div class="col s8 m8 l8 " style="height: 150px">
+            <div class="row">
+                <div class="col s10">
+                    <p>
+                        <strong>Price:</strong> $<%=data[0].price%>
+                    </p>
+                    <strong>Publisher:</strong> <%=data[0].publisher%>
+                    </p>
+                    <p>
+                        <strong>Pages:</strong> <%=data[0].pages%>
+                    </p>
+                    <p>
+                        <strong>Edition:</strong> <%=data[0].edition%>
+                    </p>
+                    <p>
+                        <strong>ISBN:</strong> <%=data[0].ISBN%>
+                        <button class=" right waves-effect waves-light btn brown" onclick="add_shopping_cart('<%=data[0].ISBN%>')"><i class="material-icons">add_shopping_cart</i> Add to Cart</button>
 
-                 <br>
-                 <br>
-                <a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.LZZZZZZZ.jpg">
-                <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[0].ISBN%>.01.MZZZZZZZ.jpg">
-                </a>
-<button class="waves-effect waves-light btn" onclick="add_shopping_cart('<%=data[0].ISBN%>')">Add Cart</button>
-                 <br>
-                 <br>
-
-                Price: <%=data[0].price%>
-                 <br>
-                 <br>
-                Publisher: <%=data[0].publisher%>
-                 <br>
-                 <br>
-                Pages: <%=data[0].pages%>
-                 <br>
-                 <br>
-                Edition: <%=data[0].edition%>
-                 <br>
-                 <br>
-
-                 ISBN: <%=data[0].ISBN%>
-                 <br>
-                 <br>
-
-
-                 <%=data[0].description%>
-                 <br>
-                 <br>
-<button class="waves-effect waves-light btn" onclick="add_shopping_cart('<%=data[0].ISBN%>')">Add Cart</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row valign-center">
+        <div class="col s1"></div>
+        <div class="col s10 m10 l10">
+            <strong>Description:</strong>
+            <span class="truncartexto" style="text-align: justify"><%-data[0].description%></span></div>
+    </div>
+    <div class="row center">
+        <button class=" waves-effect waves-light btn brown" onclick="add_shopping_cart('<%=data[0].ISBN%>')"><i class="material-icons">add_shopping_cart</i> Add to Cart</button>
+    </div>
+    <div class="row"></div>
+</div>
 
 <%- include layouts/footer.ejs %>
