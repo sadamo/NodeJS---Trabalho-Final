@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Erstellungszeit: 26. Nov 2018 um 14:35
+-- Erstellungszeit: 27. Nov 2018 um 15:46
 -- Server-Version: 10.1.34-MariaDB
 -- PHP-Version: 7.2.8
 
@@ -198,8 +198,7 @@ CREATE TABLE `bookcustomers` (
 --
 
 INSERT INTO `bookcustomers` (`custID`, `fname`, `lname`, `email`, `street`, `city`, `state`, `zip`) VALUES
-(1, 'rarysh', 'souza', 'rarysh.costa@gmail.com', 'rua', 'cid', 'FL', '12312'),
-(2, '1', '1', 'daniels@gmail.com', '1', '1', '1', '1');
+(21, 'rarysh', 'souza', 'rarysh.costa@gmail.com', 'rua', 'cid', 'FL', '12312');
 
 -- --------------------------------------------------------
 
@@ -340,13 +339,13 @@ ALTER TABLE `bookcategories`
 -- AUTO_INCREMENT für Tabelle `bookcustomers`
 --
 ALTER TABLE `bookcustomers`
-  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT für Tabelle `bookorders`
 --
 ALTER TABLE `bookorders`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

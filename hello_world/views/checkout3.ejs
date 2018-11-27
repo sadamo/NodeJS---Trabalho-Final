@@ -2,27 +2,32 @@
 
 <div class="card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
     <div class="row"></div>
-    <div class="row">
-        <div class="col s10 offset-s1">
-            <h4>Order Confirmation</h4>
+    <div class="row msg-dnone">
+        <div class="col s10 offset-s1 center">
+            Your cart is empty and your customer information has been updated.
         </div>
     </div>
-    <div class="row">
+    <div class="row table-dnone">
+        <div class="row">
+            <div class="col s10 offset-s1">
+                <h4>Order Confirmation</h4>
+            </div>
+        </div>
         <div class="col s10 offset-s1">
             <table class="highlight">
                 <tr>
                     <th>Order Number:</th>
-                    <td></td>
+                    <td><%for (i=0;i<idorder.length;i++){%><%=idorder[i].orderID%><%}%></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <th>Shipping Address:</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>State: <%=customer[0].state%></td>
+                    <td>Zip: <%=customer[0].zip%> </td>
+                    <td>City: <%=customer[0].city%></td>
+                    <td>Street: <%=customer[0].street%></td>
                 </tr>
                 <tr>
                     <th>Books Shipped:</th>
@@ -66,24 +71,23 @@
     </div>
     <div class="row">
         <div class="cols10 offset-s1 center">
-            <p>
-                A confirmation has been sent to your email address.
+                A confirmation has been sent to your email address.<br>
                 Thank you for shopping with GeekBooks.com.
-            </p>
         </div>
     </div>
     <div class="row center">
         <button class="waves-effect waves-light btn brown" onclick="window.location.href='/'">Continue shopping</button>
 
 
-        <button class="waves-effect waves-light btn brown" onclick="window.location.href='/order_history'">View your order history</button></div>
+        <button class="waves-effect waves-light btn brown" onclick="window.location.href='/order_history/:<%=customer[0].custID%>'">View your order history</button></div>
     <div class="row"></div>
 </div>
 
 
 
 <script>
-$(document).ready(function() { loadTable();
+$(document).ready(function() {
+    loadTableDELETECOOKIES();
 });</script>
 
 <%- include layouts/footer.ejs %>

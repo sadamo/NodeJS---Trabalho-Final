@@ -1,42 +1,61 @@
 <%- include layouts/header.ejs %>
 
 
-<div class="livro-row z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px"
-     xmlns:br="http://www.w3.org/1999/html">
+<div class="livro-row z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
     <div class="row"></div>
     <div class="row center">
         Your Order History<br>
 
-        You have ordered <span id="quantidade">X</span> books
+        You have ordered <span id="qttotal" class="brown-text">X</span> books
     </div>
-
-<%for(i=0;i<data.length;i++){%>
-    <div id="<%=data[i].ISBN%>" class="row div-book div-book-<%=data[i].ISBN%>" style="display:none;">
+<%for (j=0;j<customer.length;j++){%>
+    <%for(i=0;i<data.length;i++){
+        if (customer[j].ISBN == data[i].ISBN){%>
+    <div id="<%=data[i].ISBN%>" class="row div-book div-book-<%=data[i].ISBN%>">
         <div class=" col10 offset-s1 ">
             <div class="col s2 offset-s1">
                 <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/<%=data[i].ISBN%>.01.THUMBZZZ.jpg">
             </div>
             <div class="col s8">
                 <div class="col s6">
-                    Order ID:
+                    Order ID:<%=customer[j].orderID %>
                 </div>
                 <div class="col s6">
-                    Data:
+                    Data:  <%=customer[j].orderID %>
                 </div>
-                <a href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a>
-                by <%=data[i].nameF%> <%=data[i].nameL%><br>
-                Quantidade: <span id="<%=data[i].ISBN%>-qtd"></span>
+                <a class="brown-text" href="/book/:<%=data[i].ISBN%>"><%=data[i].title%></a>
+                <%
+                    count=0;
+                for (k=0;k< authors.length;k++) { %>
+
+                <%if (authors[k].ISBN == data[i].ISBN){%>
+                    <% if (count==0){
+                        count=count+1;
+                    %>
+                    by
+                    <%}
+                    else{%>
+                        and
+
+                    <%}%>
+                    <a class="brown-text" href="/SearchBrowser/author/:<%=authors[k].AuthorID%>"><%=authors[k].nameF%> <%=authors[k].nameL%></a>
+                <%}%>
+                <%}%>
+                <br>
+                Quantidade:  <span class="qtsom"><%=customer[j].qty %></span>
             </div>
         </div>
     </div>
-<%}%>
+        <%}
+    }
+}%>
     <div class="row"></div>
 </div>
 
 <script>
     $(document).ready(function() {
         loadItens();
-        loadOrder();
+        loadQTD();
     });</script>
 
 <%- include layouts/footer.ejs %>

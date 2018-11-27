@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col s10 offset-s1 center">
-            <form method="post" action="/checkout3">
+            <form method="post" id="insert" action="/checkout3/insert/">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
                     <input id="email" name="email" type="email" class="validate" required value="<%=email%>">
@@ -62,7 +62,7 @@
     </div>
     <div class="row">
         <div class="col s10 offset-s1 center">
-            <form>
+            <form method="post" id="update" action="/checkout3/update/">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
                     <input id="email" name="email" type="email" class="validate" required value="<%=data[0].email%>">
@@ -98,14 +98,21 @@
                     <input id="zip" name="zip" type="text" class="validate" required value="<%=data[0].zip%>">
                     <label for="zip">Zip</label>
                 </div>
+                <div class="input-field col s12" style="display:none">
+                    <input hidden id="custID" name="custID" type="text" class="validate" required value="<%=data[0].custID%>">
+                </div>
 
-                <button class="waves-effect waves-light btn brown" onclick="window.location.href='checkout3'">Place your order</button>
+                <button class="waves-effect waves-light btn brown" type="submit">Place your order</button>
             </form>
         </div>
     </div>
     <%}%>
     <div class="row"></div>
 </div>
+<script>
+$(document).ready(function() {
+callcookies();
+});</script>
 
 <%- include layouts/footer.ejs %>
 

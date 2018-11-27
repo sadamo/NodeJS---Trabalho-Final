@@ -1,32 +1,17 @@
 <%- include layouts/header.ejs %>
 
 
-<%if (parametro[0].CategoryName != undefined){%>
-
 <div class="livro-row card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
     <div class="row"></div>
 
     <div class="row center">
         <strong>
-            <%=data.length%> books in <span class="brown-text">'<%=parametro[0].CategoryName%>'</span> category
+            <%=data.length%> books contain <span class="brown-text">'<%=keyword%>'</span>
         </strong>
     </div>
     <div class="row"></div>
 </div>
 
-<%}else if (parametro[0].nameL != undefined){%>
-<div class="livro-row card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
-    <div class="row"></div>
-
-    <div class="row center">
-        <strong>
-            <%=data.length%> books contain <span class="brown-text">'<%=parametro[0].nameF%> <%=parametro[0].nameL%>'</span>
-        </strong>
-    </div>
-    <div class="row"></div>
-</div>
-
-<%}%>
 <% for (i=0;i< data.length;i++) { %>
 <div class="livro-row card z-index-2" style="background-color: rgb(203,195,156); border-radius: 10px">
     <div class="row"></div>

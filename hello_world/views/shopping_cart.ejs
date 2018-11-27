@@ -3,7 +3,10 @@
     <div class="row"></div>
     <div class="row">
         <div class="col s10 offset-s1">
-            <table class="highlight">
+            <div class="center">
+                <span class="brown-text" id="quantidade">X</span> items in your cart
+            </div>
+            <table class="highlight table-dnone">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -20,8 +23,8 @@
                     <td id="<%=data[i].ISBN%>-price">$<%=data[i].price%></td>
                     <td id="<%=data[i].ISBN%>-total">$</td>
                     <td class="center">
-                        <button style="width:92px; margin-bottom: 5px" class="waves-effect waves-light btn brown" onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
-                        <button style="width:92px; margin-top: 5px" class="waves-effect waves-light btn brown" onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
+                        <button style="width:92px" class="waves-effect waves-light btn brown" onclick="add_cart('<%=data[i].ISBN%>')">Add</button>
+                        <button style="width:92px" class="waves-effect waves-light btn brown" onclick="rm_cart('<%=data[i].ISBN%>')">Remove</button>
                     </td>
                 </tr>
                 <%}%>
@@ -53,10 +56,17 @@
         <button class="waves-effect waves-light btn brown" onclick="window.location.href='/'">Continue shopping</button>
         <button class="waves-effect waves-light btn brown" onclick="window.location.href='/checkout1'">Proceed to Checkout</button>
     </div>
+    <div class="row center">
+        <div class="col s10 offset-s1">
+            * Shipping is $10 for the first book and $5 for each additional book. To assure reliable delivery and to keep your costs low we send all books via UPS ground.
+        </div>
+    </div>
     <div class="row"></div>
 </div>
 <script>
-$(document).ready(function() { loadTable();
+$(document).ready(function() {
+    loadTable();
+    loadItens();
 });</script>
 
 
