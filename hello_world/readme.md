@@ -1,24 +1,37 @@
-This is a very basic example of CRUD in Node.js n mySQL.
+Assumindo que se tem um servidor xampp rodando
+==============================================
 
-Installation,Live DEMO, and tutorial here : http://teknosains.com/i/simple-crud-nodejs-mysql
+Instalar git, nodejs e npm
+==========================
 
-## Installation
-*for newbies : Clone or download zip to your machine then hit this :
+se tiver com user normal
 
-	npm install
+        $ sudo apt-get update
+        $ sudo apt-get install git nodejs npm
+se estiver com usuario root
 
-## Configuration (database)
-app.js
+        # apt-get update
+        # apt-get install git nodejs npm
 
-        host: 'localhost',
-        user: 'root',
-        password : 'root',
-        port : 3306, //port mysql
-        database:'nodejs'	
+Ir ate o diretorio onde se deseja colocar o app
+================================================
+        $ cd path/to/location
 
+Clonar o repositorio
+===================
+        $ git clone https://github.com/rarysh/NodeJS---Trabalho-Final.git
 
-	
-You're gonna need to create a DB named 'nodejs' and import customer.sql
+Entrar na pasta raiz do app      
+===========================
+        $ cd NodeJS---Trabalho-Final/hello_world
 
-## NOTES
-This repo still use Express 3, you might want to upgrade yourself or you can Go here (https://github.com/codetrash/rest-crud) for newest Express 
+Criar o banco de dados e preencher as informacoes relacionadas ao banco no arquivo app.js
+===========================================================================================
+Instalar as dependencias
+========================
+        $ npm install
+
+Subir o servidor
+================
+        $npm start
+
